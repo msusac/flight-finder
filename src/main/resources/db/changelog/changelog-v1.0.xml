@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="create_user_table" author="msusac">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user_table" schemaName="flight_finder"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="user_table" schemaName="flight_finder">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="PK_user_table" nullable="false" unique="true"/>
+            </column>
+
+            <column name="username" type="varchar(55)">
+                <constraints nullable="false" unique="true" />
+            </column>
+
+            <column name="password" type="varchar(80)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="email_address" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+
+            <column name="date_time_created" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="date_time_updated" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="insert_user_table" author="msusac">
+        <insert tableName="user_table" schemaName="flight_finder">
+            <column name="username" value="userone1" />
+            <column name="email_address" value="userone1@test.com" />
+            <column name="password" value="$2y$12$Q8fBPBBQtCRBBsqxs4iqyewG69Q7Ep0unA03qK.Vf7LYqMMCRpW3e" />
+        </insert>
+
+        <insert tableName="user_table" schemaName="flight_finder">
+            <column name="username" value="usertwo2" />
+            <column name="email_address" value="usertwo2@test.com" />
+            <column name="password" value="$2y$12$JCLCyXM16/IKcNDWA3CDIOrcTZux1/xqrVqD6R1Dn3lXI/GxzZ9ES" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

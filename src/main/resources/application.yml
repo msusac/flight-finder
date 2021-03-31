@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    url:
+    driver-class-name: org.postgresql.Driver
+    username:
+    password:
+    initialization-mode: always
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    default_schema: flight_finder
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.xml
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+
+amadeus:
+  air-api:
+    client:
+      id:
+      secret:
+      grant_type: client_credentials
+
+jwt:
+  token:
+    expiration: 1500
+    secret: MzMzYjg3YTRmYmU0YmM4YzJkZWE4NTJlZGEzMDgzZjkzOWNjM2MwMWQ4NzI2MjgwZWU0MzM5ZTY0MGEzMjg1YzIwMjU1MWM5ZTNkMzg5YWNiMjExNGJlMTE4NjZlMWMxODIxNjYwMTBkZTRiZWRlNzU3MDc5ZThhMDcxMjlkMGE
+
+server:
+  port: 8090
+

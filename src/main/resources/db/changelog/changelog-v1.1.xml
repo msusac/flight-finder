@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="create_flight_table" author="msusac">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="flight_table" schemaName="flight_finder"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="flight_table" schemaName="flight_finder">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="PK_flight_table" nullable="false" unique="true"/>
+            </column>
+
+            <column name="origin_location_code" type="varchar(5)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="destination_location_code" type="varchar(5)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="departure_date" type="date">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="return_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="passenger_count" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="transfer_count" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="currency_code" type="char(3)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="total_price" type="double(6,2)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="date_time_created" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="user_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableSchemaName="flight_finder"
+                baseColumnNames="user_id"
+                baseTableName="flight_table"
+                constraintName="fk_flight_user_id"
+                referencedTableSchemaName="flight_finder"
+                referencedColumnNames="id"
+                referencedTableName="user_table"/>
+    </changeSet>
+
+    <changeSet id="insert_flight_table" author="msusac">
+        <insert tableName="flight_table" schemaName="flight_finder">
+            <column name="origin_location_code" value="SYD" />
+            <column name="destination_location_code" value="MAD" />
+            <column name="departure_date" value="2021-06-14" />
+            <column name="return_date" value="2021-06-25" />
+            <column name="passenger_count" value="2" />
+            <column name="transfer_count" value="2" />
+            <column name="currency_code" value="EUR" />
+            <column name="total_price" value="900.20" />
+            <column name="user_id" value="1" />
+        </insert>
+        <insert tableName="flight_table" schemaName="flight_finder">
+            <column name="origin_location_code" value="SYD" />
+            <column name="destination_location_code" value="MAD" />
+            <column name="departure_date" value="2021-06-15" />
+            <column name="return_date" value="2021-06-21" />
+            <column name="passenger_count" value="1" />
+            <column name="transfer_count" value="2" />
+            <column name="currency_code" value="EUR" />
+            <column name="total_price" value="1020.20" />
+            <column name="user_id" value="1" />
+        </insert>
+        <insert tableName="flight_table" schemaName="flight_finder">
+            <column name="origin_location_code" value="MAD" />
+            <column name="destination_location_code" value="BKK" />
+            <column name="departure_date" value="2021-06-10" />
+            <column name="return_date" value="2021-06-30" />
+            <column name="passenger_count" value="4" />
+            <column name="transfer_count" value="3" />
+            <column name="currency_code" value="HRK" />
+            <column name="total_price" value="1900.20" />
+            <column name="user_id" value="1" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>
