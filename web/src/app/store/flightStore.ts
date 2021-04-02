@@ -33,7 +33,7 @@ export default class FlightStore {
             runInAction(() => {
                 this.savedFlights = this.savedFlights.filter(flight => flight.id !== id);
                 this.loading = false;
-                toast.success("Deleted Saved Flight Offer!");
+                toast.success("Deleted a Saved Flight Offer!");
             });
         }
         catch (error) {

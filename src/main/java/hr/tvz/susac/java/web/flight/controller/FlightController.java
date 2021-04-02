@@ -41,7 +41,7 @@ public class FlightController {
         flightDTO = flightService.save(flightDTO);
         log.info("Saved a Flight Offer: " + flightDTO);
 
-        return ResponseEntity.ok("Saved Flight Offer!");
+        return ResponseEntity.ok("Saved a Flight Offer!");
     }
 
     @PostMapping("/search")
@@ -74,6 +74,6 @@ public class FlightController {
     {
         log.info("Deleting saved Flight Offer");
         flightService.deleteSaveById(id);
-        return ResponseEntity.ok("Deleted saved Flight Offer!");
+        return ResponseEntity.ok("Deleted a saved Flight Offer!");
     }
 }
