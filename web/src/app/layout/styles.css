@@ -1,0 +1,60 @@
+body {
+  background-image: url('../../assets/homepage.jpg') !important;
+}
+
+.react-calendar {
+  width: 100%;
+  border: none;
+  box-shadow: 0 1px 2px 0 rgba(34,23,15);
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.homepage, .flight {
+  display: flex;
+  align-items: center;
+}
+
+.homepage {
+  height: 100vh;
+}
+
+.homepage .container {
+  margin: 5em;
+  padding: 5em;
+}
+
+.flight .container {
+  margin: 15px;
+  padding: 5em;
+}
+
+.container {
+  background-color: rgba(140, 145, 148, 0.5) !important;
+  border: white 3px solid;
+  border-radius: 25px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.homepage .ui.menu .ui.button,
+.ui.menu a.ui.inverted.button {
+  margin-left: 0.5em;
+}
+
+.homepage h1.ui.header {
+  font-size: 6em;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.homepage h2.ui.header {
+  font-size: 2.2em;
+  font-weight: bold;
+}

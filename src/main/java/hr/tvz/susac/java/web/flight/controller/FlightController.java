@@ -19,7 +19,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/flight")
 public class FlightController {
 
@@ -50,6 +50,7 @@ public class FlightController {
                                     Errors errors)
     {
         if (errors.hasErrors()) throw new BadRequestException(errors);
+        log.info(searchDTO.toString());
 
         log.info("Retrieving flight offers from Air Api Search!");
         UserDTO userDTO = userService.findCurrentUserAirToken(jwt.split(" ")[1]);
@@ -62,6 +63,7 @@ public class FlightController {
     public ResponseEntity<?> searchSave(@Valid @RequestBody FlightSaveSearchDTO searchDTO, Errors errors)
     {
         if (errors.hasErrors()) throw new BadRequestException(errors);
+        log.info(searchDTO.toString());
 
         List<FlightDTO> flightDTOList = flightService.searchSave(searchDTO);
         return ResponseEntity.ok(flightDTOList);

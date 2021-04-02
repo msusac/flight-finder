@@ -17,14 +17,14 @@ public class FlightDTO {
     @JsonProperty(value = "id")
     private Long id;
 
-    @NotNull(message = "Origin Location code is required!")
+    @NotNull(message = "Origin Location Code is required!")
     @Pattern(regexp = "^[A-Z]+$",
             message = "Origin Location Code accepts only alphabetic uppercase letters without any white space!")
     @Size(min = 2, max = 4, message = "Origin Location Code contains only 2-4 characters!")
     @JsonProperty(value = "originLocationCode")
     private String originLocationCode;
 
-    @NotNull(message = "Destination Location code is required!")
+    @NotNull(message = "Destination Location Code is required!")
     @Pattern(regexp = "^[A-Z]+$",
             message = "Destination Location Code accepts only alphabetic uppercase letters without any white space!")
     @Size(min = 2, max = 4, message = "Destination Location Code contains only 2-4 characters!")

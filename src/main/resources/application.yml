@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url:
+    url: jdbc:postgresql://localhost:5433/msusacDB
     driver-class-name: org.postgresql.Driver
-    username:
-    password:
+    username: postgres
+    password: post
     initialization-mode: always
 
   jpa:
@@ -26,8 +26,8 @@ logging:
 amadeus:
   air-api:
     client:
-      id:
-      secret:
+      id: WWCiQFkctTMGnSEZgTO0Gc8ZAV5W1NcL
+      secret: MDRew4rN2FRiH4hv
       grant_type: client_credentials
 
 jwt:

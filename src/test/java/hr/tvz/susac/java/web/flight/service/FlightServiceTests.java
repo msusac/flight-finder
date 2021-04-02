@@ -30,7 +30,7 @@ public class FlightServiceTests {
     public void findAllSave()
     {
         List<FlightDTO> flightDTOList = flightService.findAllSave();
-        assertEquals(3, flightDTOList.size());
+        assertEquals(5, flightDTOList.size());
     }
 
     /*
@@ -75,7 +75,7 @@ public class FlightServiceTests {
         assertNotNull(flightDTO);
 
         List<FlightDTO> flightDTOList = flightService.findAllSave();
-        assertEquals(4, flightDTOList.size());
+        assertEquals(6, flightDTOList.size());
     }
 
     @Test
@@ -86,6 +86,6 @@ public class FlightServiceTests {
         flightService.deleteSaveById(FLIGHT_ONE_ID);
 
         List<FlightDTO> flightDTOList = flightService.findAllSave();
-        assertEquals(2, flightDTOList.size());
+        assertEquals(4, flightDTOList.size());
     }
 }

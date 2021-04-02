@@ -102,5 +102,27 @@
             <column name="total_price" value="1900.20" />
             <column name="user_id" value="1" />
         </insert>
+        <insert tableName="flight_table" schemaName="flight_finder">
+            <column name="origin_location_code" value="AAH" />
+            <column name="destination_location_code" value="LCG" />
+            <column name="departure_date" value="2021-08-14" />
+            <column name="return_date" value="2021-09-01" />
+            <column name="passenger_count" value="2" />
+            <column name="transfer_count" value="5" />
+            <column name="currency_code" value="USD" />
+            <column name="total_price" value="1500.20" />
+            <column name="user_id" value="1" />
+        </insert>
+        <insert tableName="flight_table" schemaName="flight_finder">
+            <column name="origin_location_code" value="ZMH" />
+            <column name="destination_location_code" value="AAR" />
+            <column name="departure_date" value="2021-06-10" />
+            <column name="return_date" value="2021-06-21" />
+            <column name="passenger_count" value="1" />
+            <column name="transfer_count" value="2" />
+            <column name="currency_code" value="USD" />
+            <column name="total_price" value="2650.20" />
+            <column name="user_id" value="1" />
+        </insert>
     </changeSet>
 </databaseChangeLog>

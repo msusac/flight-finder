@@ -30,14 +30,16 @@ public class FlightSearchDTO {
     @JsonProperty(value = "destinationLocationCode")
     private String destinationLocationCode;
 
+    @Future(message = "Future Departure Date is required!")
     @NotNull(message = "Departure Date is required!")
     @JsonProperty(value = "departureDate")
     private LocalDate departureDate;
 
+    @Future(message = "Future Return Date is required!")
     @JsonProperty(value = "returnDate")
     private LocalDate returnDate;
 
-    @Range(min = 1, max = 9, message = "Passenger count must be between 1 and 9!")
+    @Range(min = 1, max = 9, message = "Passenger Count must be between 1 and 9!")
     @NotNull(message = "Passenger Count is required!")
     @JsonProperty(value = "passengerCount")
     private Integer passengerCount;
@@ -46,8 +48,8 @@ public class FlightSearchDTO {
     @JsonProperty(value = "currencyCode")
     private String currencyCode = "";
 
-    @AssertTrue(message = "Departure Date is not in correct chronological order!")
-    private boolean isValidDepartureDate()
+    @AssertTrue(message = "Return Date must be greater than or equal to Departure Date!")
+    private boolean isValidReturnDate()
     {
         if (Objects.isNull(returnDate)) return true;
 

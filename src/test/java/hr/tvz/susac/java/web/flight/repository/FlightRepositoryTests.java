@@ -31,7 +31,7 @@ public class FlightRepositoryTests
     public void findAllByUserId()
     {
         List<Flight> flightList = flightRepository.findAllByUserId(USER_ONE_ID);
-        assertEquals(3, flightList.size());
+        assertEquals(5, flightList.size());
     }
 
     @Test
@@ -53,7 +53,7 @@ public class FlightRepositoryTests
         flightRepository.deleteByIdAndUser_Id(FLIGHT_ONE_ID, USER_ONE_ID);
         List<Flight> flightList = flightRepository.findAllByUserId(USER_ONE_ID);
 
-        assertEquals(2, flightList.size());
+        assertEquals(4, flightList.size());
     }
 
     @Test
@@ -68,6 +68,6 @@ public class FlightRepositoryTests
         assertNotNull(flight);
 
         List<Flight> flightList = flightRepository.findAllByUserId(USER_ONE_ID);
-        assertEquals(4, flightList.size());
+        assertEquals(6, flightList.size());
     }
 }
