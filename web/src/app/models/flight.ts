@@ -1,3 +1,8 @@
+export interface Airport {
+    text: string,
+    value: string
+}
+
 export interface Flight {
     id: number,
     originLocationCode: string;

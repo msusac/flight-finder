@@ -21,8 +21,8 @@ import java.util.List;
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/flight")
-public class FlightController {
-
+public class FlightController
+{
     private final FlightService flightService;
     private final UserService userService;
 

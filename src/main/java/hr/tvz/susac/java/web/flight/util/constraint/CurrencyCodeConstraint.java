@@ -10,7 +10,8 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = CurrencyCodeValidator.class)
 @Target( { ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CurrencyCodeConstraint {
+public @interface CurrencyCodeConstraint
+{
     String message() default "Unacceptable Currency Code. Use only USD, EUR, HRK or leave it empty!";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

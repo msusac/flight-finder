@@ -44,7 +44,8 @@ public class FlightServiceImpl implements FlightService
     }
 
     @Override
-    public List<FlightDTO> searchSave(FlightSaveSearchDTO searchDTO) {
+    public List<FlightDTO> searchSave(FlightSaveSearchDTO searchDTO)
+    {
         String origin = searchDTO.getOriginLocationCode();
         String destination = searchDTO.getDestinationLocationCode();
         String departureDate = "";
@@ -69,7 +70,8 @@ public class FlightServiceImpl implements FlightService
     }
 
     @Override
-    public FlightDTO save(FlightDTO flightDTO) {
+    public FlightDTO save(FlightDTO flightDTO)
+    {
         Flight flight = converterUtil.convertToEntity(flightDTO);
         flight.setId(null);
         flight.setUser(userServiceImpl.getCurrentUser());

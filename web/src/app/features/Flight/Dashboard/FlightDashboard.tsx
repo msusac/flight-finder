@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Container, Header, Segment } from 'semantic-ui-react';
 import { useStore } from '../../../store/store';
@@ -7,7 +7,9 @@ import FlightTable from '../Table/FlightTable';
 
 const FlightDashboard = () => {
     const { flightStore } = useStore();
-    const { flights } = flightStore;
+    const { flights, getFlights, loadAirports } = flightStore;
+
+    useEffect(() => { getFlights(); loadAirports();}, [flightStore]);
 
     return (
         <>

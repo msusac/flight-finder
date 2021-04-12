@@ -7,9 +7,9 @@ import FlightSaveTable from '../Table/FlightSaveTable';
 
 const FlightSaveDashboard = () => {
     const { flightStore } = useStore();
-    const { savedFlights, getSavedFlights } = flightStore;
+    const { loadAirports, savedFlights, getSavedFlights } = flightStore;
 
-    useEffect(() => { getSavedFlights()}, [flightStore]);
+    useEffect(() => { loadAirports(); getSavedFlights(); }, [flightStore]);
 
     return (
         <>

@@ -26,8 +26,8 @@ logging:
 amadeus:
   air-api:
     client:
-      id: WWCiQFkctTMGnSEZgTO0Gc8ZAV5W1NcL
-      secret: MDRew4rN2FRiH4hv
+      id: 
+      secret:
       grant_type: client_credentials
 
 jwt:

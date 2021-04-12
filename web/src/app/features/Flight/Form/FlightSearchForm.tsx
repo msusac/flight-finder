@@ -5,7 +5,7 @@ import { useStore } from '../../../store/store';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { currencyOptions } from '../../../common/options/CurrencyOptions';
-import React from 'react';
+import React, { useEffect } from 'react';
 import CustomDateInput from '../../../common/form/CustomDateInput';
 import CustomTextInput from '../../../common/form/CustomTextInput';
 import CustomSelectInput from '../../../common/form/CustomSelectInput';
@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 
 const FlightSearchForm = () => {
     const { flightStore } = useStore();
-    const { airportOptions, loadingInitial, searchFlights } = flightStore;
+    const { airports, loadingInitial, searchFlights } = flightStore;
 
     let newDate = new Date();
     newDate.setDate(newDate.getDate() + 1 );
@@ -90,14 +90,14 @@ const FlightSearchForm = () => {
                         <Grid.Row columns={3} centered>
 
                             <Grid.Column>
-                                <CustomSelectInput options={airportOptions} placeholder='Origin Location Code' name='originLocationCode' />
+                                <CustomSelectInput options={airports} placeholder='Origin Location Code' name='originLocationCode' />
                                 <ErrorMessage
                                     name='errorOrigin'
                                     render={() => (<Label basic color='red' content={errors.errorOrigin} />)} />
                             </Grid.Column>
 
                             <Grid.Column>
-                                <CustomSelectInput options={airportOptions} placeholder='Destination Location Code' name='destinationLocationCode' />
+                                <CustomSelectInput options={airports} placeholder='Destination Location Code' name='destinationLocationCode' />
                                 <ErrorMessage
                                     name='errorDestination'
                                     render={() => (<Label basic color='red' content={errors.errorDestination} />)} />

@@ -1,24 +1,16 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import agent from '../api/agent';
 import { airportIATAOptions } from '../common/options/AirportOptions';
-import { Flight, FlightSearchFormValues } from '../models/flight';
+import { Airport, Flight, FlightSearchFormValues } from '../models/flight';
 import { toast } from 'react-toastify';
 
 export default class FlightStore {
+    airports: Airport[] = [];
     flights: Flight[] = [];
-    savedFlights : Flight[] = [];
+    savedFlights: Flight[] = [];
     loading = false;
     loadingInitial = false;
     loadingSearch = false;
-
-    filteredAirports = airportIATAOptions.filter((val, id, array) =>
-        array.findIndex(item => (item.iata === val.iata)) === id
-    ).sort((a, b) => (a.iata > b.iata ? 1 : -1));
-
-    airportOptions = this.filteredAirports.map((airport, id) => ({
-        text: airport.iata + ' - ' + airport.name,
-        value: airport.iata
-    }));
 
     constructor() {
         makeAutoObservable(this)
@@ -44,6 +36,12 @@ export default class FlightStore {
         }
     }
 
+    getFlights = async () => {
+        runInAction(() => {
+            this.flights = []
+        });
+    }
+
     getSavedFlights = async () => {
         this.loadingInitial = true;
 
@@ -62,6 +60,21 @@ export default class FlightStore {
 
             this.loadingInitial = false;
         }
+    }
+
+    loadAirports = async () => {
+        const filteredAirports = airportIATAOptions.filter((val, id, array) =>
+            array.findIndex(item => (item.iata === val.iata)) === id
+        ).sort((a, b) => (a.iata > b.iata ? 1 : -1));
+
+        const filteredAirportsFinal = filteredAirports.map((airport, id) => ({
+            text: airport.iata + ' - ' + airport.name,
+            value: airport.iata
+        }));
+
+        runInAction(() => {
+            this.airports= filteredAirportsFinal;
+        });
     }
 
     saveSelectedFlight = async (id: number) => {
@@ -98,7 +111,7 @@ export default class FlightStore {
             this.loadingSearch = false;
 
             if (flights.length > 0) toast.info("Found " + flights.length + " result(s)!");
-            else toast.info("No restults were found!");
+            else toast.info("No results were found!");
         }
         catch (error) {
             this.loadingSearch = false;
